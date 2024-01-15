@@ -188,18 +188,26 @@ const WalletConnectComponent = () => {
             console.log("🚀 ~ file: WalletConnectButton.js:120 ~ sendRawPayloadAsync ~ payloadWithDefaults:", payloadWithDefaults)
             console.log("🚀 ~ file: WalletConnectButton.js:132 ~ provider.web3.eth.sendTransaction ~ provider:", provider)
             
-                const response = await new Promise((resolve, reject) => {
-                  // Send the payload to the provider
-                  provider.web3.currentProvider.sendAsync(payload, (error, response) => {
-                    if (error) {
-                      reject(error);
-                    } else {
-                      resolve(response);
-                    }
-                  });
-                });
+                // const response = await new Promise((resolve, reject) => {
+                //   // Send the payload to the provider
+                //   provider.web3.currentProvider.sendAsync(payload, (error, response) => {
+                //     if (error) {
+                //       reject(error);
+                //     } else {
+                //       resolve(response);
+                //     }
+                //   });
+                // });
+                let response;
+
+                try {
+                    console.log("🚀 ~ file: WalletConnectButton.js:208 ~ sendRawPayloadAsync ~ provider.web3.currentProvider.request:", provider.web3.currentProvider.request)
+                    response = await provider.web3.currentProvider.request(payload);
+                    console.log("🚀 ~ file: WalletConnectButton.js:206 ~ response1 ~ response1:", response)
+                } catch (error) {
+                    console.log("🚀 ~ file: WalletConnectButton.js:209 ~ sendRawPayloadAsync ~ error:", error)
+                }
                 
-                console.log("🚀 ~ file: WalletConnectButton.js:135 ~ sendRawPayloadAsync ~ response:", response)
                 if (!response) {
                     throw new Error(`No response`);
                 }

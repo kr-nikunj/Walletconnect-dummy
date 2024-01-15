@@ -14,7 +14,7 @@
     "path": false
   },
   "dependencies": {
-    "@walletconnect/ethereum-provider": "^2.8.5",
+    "@walletconnect/ethereum-provider": "^2.11.0",
     "@walletconnect/modal": "^2.6.2",
     "bignumber.js": "^9.1.2",
     "dweb-nft-js": "git+ssh://git@github.com/decentraweb/dweb-nft-js.git#web3-v-change-error-solve",
