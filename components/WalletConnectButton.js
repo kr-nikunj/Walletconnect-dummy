@@ -273,6 +273,32 @@ const WalletConnectComponent = () => {
     }
   };
 
+  const ShowCurrentNetwork = async () => {
+      console.log("showCurrentNetwork ~ showCurrentNetwork");
+      try {
+        const network = await ethereum.request({ method: 'net_version' });
+        alert(`Current Network: ${network}`);
+    } catch (error) {
+        console.error(error);
+        alert('Error fetching network information');
+    }
+  }
+
+  const SwitchNetwork = async () => {
+    const network = await ethereum.request({ method: 'net_version' });
+    const customNetwork = network === "5" ? "13881" : "5";
+    try {
+      await ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId:`0x${customNetwork}`}]
+      });
+    } catch (switchError) {
+        console.error(switchError);
+    }
+  };
+
+
+
   const NCRNFTTransfer = async () => {
     const web3 = walletProvider.web3; 
     console.log("🚀 ~ file: WalletConnectButton.js:204 ~ NCRNFTTransfer ~ walletProvider:", walletProvider)
@@ -2066,6 +2092,9 @@ const WalletConnectComponent = () => {
           <button onClick={sendEth}>Send 0.0001 ETH</button>
           <button onClick={NCRTokenTransfer}>NCRTokenTransfer</button>
           <button onClick={NCRNFTTransfer}>NCRNFTTransfer</button>
+          <button onClick={ShowCurrentNetwork}>Show Current Network</button>
+          <button onClick={SwitchNetwork}>SwictNetwork</button>
+
         </div>
       ) : (
         <>
