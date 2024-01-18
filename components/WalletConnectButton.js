@@ -297,6 +297,9 @@ const WalletConnectComponent = () => {
     }
   };
 
+  const ConnectTwitter = async () => {
+    console.log("Connect Twitter");
+  }
 
 
   const NCRNFTTransfer = async () => {
@@ -2094,7 +2097,7 @@ const WalletConnectComponent = () => {
           <button onClick={NCRNFTTransfer}>NCRNFTTransfer</button>
           <button onClick={ShowCurrentNetwork}>Show Current Network</button>
           <button onClick={SwitchNetwork}>SwictNetwork</button>
-
+          <button onClick={ConnectTwitter}>Connect twitter</button>
         </div>
       ) : (
         <>
