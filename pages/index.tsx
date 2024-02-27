@@ -1,7 +1,7 @@
 import WalletConnectComponent from '../components/WalletConnectButton'
 import SvgMotion from '../components/SvgMotion';
 import React from 'react';
-import TwitterLoginButton from '../components/TwitterLoginButton';
+import { TwitterOauthButton } from "../components/TwitterOauthButton";
 
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
     <>
     <WalletConnectComponent />
     {/* <SvgMotion /> */}
-    <TwitterLoginButton onLogin={handleTwitterLogin} />
+    <TwitterOauthButton />
     </>
   )
 }
